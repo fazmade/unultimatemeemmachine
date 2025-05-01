@@ -12,14 +12,14 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"c17014b4-b341-4f5d-a542-224a1a50d698","name":"c17014b4-b341-4f5d-a542-224a1a50d698","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"","%Name":"e621d4dd-0135-4a09-9073-8fb0eb5ff47c","name":"e621d4dd-0135-4a09-9073-8fb0eb5ff47c","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
   "height":64,
   "HTile":false,
   "layers":[
-    {"$GMImageLayer":"","%Name":"8fec7c21-9e47-49c4-9bfc-95d974b15808","blendMode":0,"displayName":"default","isLocked":false,"name":"8fec7c21-9e47-49c4-9bfc-95d974b15808","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"766a5e5f-5722-4fc8-8fa9-f4418bb579f8","blendMode":0,"displayName":"default","isLocked":false,"name":"766a5e5f-5722-4fc8-8fa9-f4418bb579f8","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"spr_yaysuu_crouch",
   "nineSlice":null,
@@ -63,14 +63,16 @@
     "playbackSpeedType":0,
     "resourceType":"GMSequence",
     "resourceVersion":"2.0",
+    "seqHeight":64.0,
+    "seqWidth":64.0,
     "showBackdrop":true,
     "showBackdropImage":false,
     "timeUnits":1,
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"c17014b4-b341-4f5d-a542-224a1a50d698","path":"sprites/spr_yaysuu_crouch/spr_yaysuu_crouch.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"25eec4b2-f0ac-4824-baa7-2d12146f5eeb","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"e621d4dd-0135-4a09-9073-8fb0eb5ff47c","path":"sprites/spr_yaysuu_crouch/spr_yaysuu_crouch.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"df60dfcb-c64d-4bc6-9a7f-548dcbc198ef","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,
