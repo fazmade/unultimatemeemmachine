@@ -15,22 +15,22 @@ if spotted
 {
 	if shoottimer>0
 	{
-		shoottimer--
+		shoottimer -= 0.5
 		if (shoottimer == 20)
 			sprite_index = spr_robot2_prefire
 	}
 	else
 	{
-		with (instance_create_depth(x + (24 * image_xscale), y - 6, depth + 1, obj_robot2_boolet))
+		with (instance_create_depth(x + (24 * image_xscale), y, depth + 1, obj_robot2_boolet))
 			image_xscale = other.image_xscale
 		audio_play_sound(snd_shoot,1,false)
 		sprite_index=spr_robot2_shoot
-		shoottimer=60
+		shoottimer=50
 	}
 }
 else
 {
-	shoottimer = 60
+	shoottimer = 50
 	sprite_index=spr_robot2
 }
 event_inherited()

@@ -22,7 +22,10 @@ if (global.inlevel)
 	if (damageflash)
 		damagealpha = 0.5
 	
-	draw_sprite_ext(sprite_index, image_index, drawx, drawy, image_xscale, image_yscale, image_angle, image_blend, image_alpha * damagealpha)
+	var yscale = 1
+	if (sprite_index == spr_yaysuu_jump)
+		yscale = clamp(vsp, -2, 2) * -0.5
+	draw_sprite_ext(sprite_index, image_index, drawx, drawy, image_xscale, yscale, image_angle, image_blend, image_alpha * damagealpha)
 	if (runanimtimer != -1)
 		draw_sprite_ext(spr_boost, runanimtimer / 60 * 16, drawx, drawy, image_xscale, image_yscale, image_angle, image_blend, image_alpha * damagealpha)
 	if (showarrow)

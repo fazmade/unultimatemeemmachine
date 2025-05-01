@@ -11,3 +11,4 @@ else if place_meeting(x,y,obj_rubble)
 	instance_destroy(rubbe)
 	instance_destroy()
 }
+image_yscale = -image_yscale

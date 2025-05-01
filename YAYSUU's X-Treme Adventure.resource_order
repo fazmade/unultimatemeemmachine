@@ -283,6 +283,7 @@
     {"name":"snd_ouchie","order":5,"path":"sounds/snd_ouchie/snd_ouchie.yy",},
     {"name":"snd_paused","order":43,"path":"sounds/snd_paused/snd_paused.yy",},
     {"name":"snd_platfall","order":76,"path":"sounds/snd_platfall/snd_platfall.yy",},
+    {"name":"snd_poundland","order":92,"path":"sounds/snd_poundland/snd_poundland.yy",},
     {"name":"snd_run","order":68,"path":"sounds/snd_run/snd_run.yy",},
     {"name":"snd_shoot","order":36,"path":"sounds/snd_shoot/snd_shoot.yy",},
     {"name":"snd_slide","order":3,"path":"sounds/snd_slide/snd_slide.yy",},

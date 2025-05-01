@@ -28,7 +28,7 @@ if (inbackground)
 inwater = place_meeting(x, y, obj_water)
 
 move = (global.key_right - global.key_left)
-if (move != 0)
+if (move != 0 && state != playerstates.dash)
 	facingdirection = move
 if (global.key_run && state == playerstates.normal && abs(hsp) > walkspeed && global.char != "C")
 	move = facingdirection
@@ -109,40 +109,40 @@ var candodashdo = abs(hsp) <= runspeed && !amiwalled(hsp)
 if (state != playerstates.dead && state != playerstates.inactive)
 {
 	
-if (candodashdo)
-{
-	if (state == playerstates.dash)
-	{
-		state = playerstates.normal
-		newstate = playerstates.normal
-	}
-	else if (state == playerstates.slide)
-	{
-		state = playerstates.crouch
-		newstate = playerstates.crouch
-	}
-}
-
 //airdash
 if ((!grounded) && global.key_dashp && (state == playerstates.normal || state == playerstates.bounce || state == playerstates.stomp) && newstate == state && !dshed && candodashdo && global.char != "C")
 {
     hsp = dashboost * facingdirection
+    vsp = -dashboost
     dshed = true
 	newstate = playerstates.dash
     audio_play_sound(snd_airdash, 1, false)
+	image_index = 0
 }
-if (state == playerstates.dash && newstate == state && grounded)
+if (state == playerstates.dash && newstate == state)
 {
-	newstate = playerstates.normal
+	if (grounded || amiwalled(hsp))
+	{
+		newstate = playerstates.normal
+	}
+	else if (image_index < 4)
+	{
+		hsp = dashboost * facingdirection
+		vsp = -dashboost
+	}
+	else if (vsp == -dashboost + grv)
+	{
+		vsp = -4
+	}
 }
 
 //sliiide to the left! sliiide to the right! criss-cross! criss-cross! cha cha real smooth~ *ragdoll noises*
-if (grounded && ((abs(hsp) > walkspeed && global.key_downp) || global.key_dashp) && (state == playerstates.normal || state == playerstates.crouch) && newstate == state && candodashdo)
+/*if (grounded && ((abs(hsp) > walkspeed && global.key_downp) || global.key_dashp) && (state == playerstates.normal || state == playerstates.crouch) && newstate == state && candodashdo)
 {
     hsp = dashboost * facingdirection
 	newstate = playerstates.slide
     audio_play_sound(snd_slide, 1, false)
-}
+}*/
 
 //stomp
 if ((!grounded) && global.key_downp && newstate == state && (state == playerstates.normal || state == playerstates.dash))
@@ -154,29 +154,15 @@ if ((!grounded) && global.key_downp && newstate == state && (state == playerstat
 }
 else if (grounded && state == playerstates.stomp && newstate == state)
 {
-	if (global.char == "T")
-	{
-		newstate = playerstates.normal
-		grounded = true
-	}
-	else
-		scr_player_trybounce()
-	hsp += move * smashbump
-}
-else if (state == playerstates.bounce && newstate == state)
-{
-	if ((vsp >= 0 && global.char != "C") || grounded)
-		newstate = playerstates.normal
-	else if (global.key_downp)
-	{
-		vsp += 5
-		audio_play_sound(snd_stomp, 1, false)
-		newstate = playerstates.stomp
-	}
+	newstate = playerstates.normal
+	grounded = true
+	sprite_index = spr_yaysuu_endpound
+	hsp = 0
+    audio_play_sound(snd_poundland, 1, false)
 }
 
 //dash run
-if (global.key_runp && state == playerstates.normal && newstate == state && !amiwalled(hsp) && global.char != "C" && !inwater)
+/*if (global.key_runp && state == playerstates.normal && newstate == state && !amiwalled(hsp) && global.char != "C" && !inwater)
 {
 	yearnedhsp = facingdirection * runspeed
 	if (abs(hsp) < (yearnedhsp) || sign(hsp) != sign(yearnedhsp)) //you will not slow down if you start a run
@@ -189,7 +175,7 @@ if (global.key_runp && state == playerstates.normal && newstate == state && !ami
 		fade = true
 		image_blend = other.whooshcolor
 	}
-}
+}*/
 
 //crouching
 var forcecrouch = false
@@ -386,7 +372,7 @@ if (state != playerstates.dead)
 if (state != playerstates.golfstop && state != playerstates.dead)
 {
 	var accel
-	if abs(hsp) >= walkspeed && (hsp * sign(hsp)) < (yearnedhsp * sign(hsp)) && !global.inv && global.char == "C" //cotton's gradual run
+	if abs(hsp) >= walkspeed && (hsp * sign(hsp)) < (yearnedhsp * sign(hsp)) && !global.inv //cotton's gradual run
 		accel = yearnacceloverspeed
 	else if (sign(hsp) != sign(yearnedhsp) && sign(yearnedhsp) != 0) || (abs(hsp) <= runspeed) //wants to decrease below walking
 		accel = yearnaccelunderspeed
@@ -656,42 +642,25 @@ if (global.char == "Y")
 		case playerstates.normal:
 			if (grounded)
 			{
-				if (sign(hsp) != sign(yearnedhsp) && !gotwalled)
+				if (sign(hsp) != sign(yearnedhsp) && !gotwalled && sprite_index != spr_yaysuu_endpound)
 				{
 					if ((sprite_index == spr_yaysuu_idle || sprite_index == spr_yaysuu_walk) && abs(hsp) < walkspeed && sign(yearnedhsp) == 0)
 						newsprite = spr_yaysuu_idle
 					else
 						newsprite = spr_yaysuu_brake
 				}
-				else if (abs(hsp) < yearnaccel)
+				else if (abs(hsp) < yearnaccel && sprite_index != spr_yaysuu_endpound)
 				{
 					if (idletime > 600)
 						newsprite = spr_yaysuu_wait
 					else
 						newsprite = spr_yaysuu_idle
 				}
-				else if (abs(hsp) > walkspeed)
-					newsprite = spr_yaysuu_run
-				else
+				else if (abs(hsp) > 0.5)
 					newsprite = spr_yaysuu_walk
 			}
 			else
-			{
-				if (abs(hsp) > walkspeed)
-				{
-					if (vsp > 0)
-						newsprite = spr_yaysuu_launch
-					else
-						newsprite = spr_yaysuu_launchjump
-				}
-				else
-				{
-					if (vsp > 0)
-						newsprite = spr_yaysuu_fall
-					else
-						newsprite = spr_yaysuu_jump
-				}
-			}
+				newsprite = spr_yaysuu_jump
 			
 			if (newsprite != spr_yaysuu_brake)
 				image_xscale = facingdirection
@@ -723,8 +692,7 @@ if (global.char == "Y")
 			image_xscale = facingdirection
 			break;
 		case playerstates.win:
-			if (sprite_index != spr_yaysuu_winb)
-				newsprite = spr_yaysuu_win
+			newsprite = spr_yaysuu_win
 			break;
 		case playerstates.golfstop:
 			newsprite = spr_yaysuu_spinball
@@ -738,8 +706,8 @@ if (global.char == "Y")
 	}
 	sprite_index = newsprite
 	
-	if (sprite_index == spr_yaysuu_jump && image_index == 4) //don't replay the animation. thanks for adding 2 extra useless frame yaysuu!
-		image_index = 2
+	if (sprite_index == spr_yaysuu_airdash && floor(image_index) == 7) //don't replay the animation. thanks for adding 2 extra useless frame yaysuu!
+		image_index = 5
 	
 	if (sprite_index == spr_yaysuu_idle || sprite_index == spr_yaysuu_wait)
 		idletime++
@@ -748,7 +716,7 @@ if (global.char == "Y")
 
 	if (!audio_exists(runningsound))
 		runningsound = audio_play_sound(snd_run, 1, true)
-	if (sprite_index == spr_yaysuu_run)
+	if (sprite_index == spr_yaysuu_walk)
 	{
 		if audio_is_paused(runningsound)
 			audio_resume_sound(runningsound)
@@ -768,253 +736,6 @@ if (global.char == "Y")
 		if (!hasplayedbrakesound)
 		{
 			audio_play_sound(snd_brake, 1, false)
-			hasplayedbrakesound = true
-		}
-	}
-	else
-		hasplayedbrakesound = false
-}
-else if (global.char == "T")
-{
-    var newsprite = sprite_index
-    switch (state)
-	{
-		case playerstates.normal:
-			if (grounded)
-			{
-				if (sign(hsp) != sign(yearnedhsp) && !gotwalled)
-				{
-					if ((sprite_index == spr_teddy_idle || sprite_index == spr_yaysuu_walk) && abs(hsp) < walkspeed && sign(yearnedhsp) == 0)
-						newsprite = spr_teddy_idle
-					else
-						newsprite = spr_teddy_brake
-				}
-				else if (abs(hsp) < yearnaccel)
-				{
-					if (idletime > 600)
-						newsprite = spr_teddy_wait
-					else
-						newsprite = spr_teddy_idle
-				}
-				else if (abs(hsp) > walkspeed)
-					newsprite = spr_teddy_run
-				else
-					newsprite = spr_teddy_walk
-			}
-			else
-			{
-				if (abs(hsp) > walkspeed)
-				{
-					if (vsp > 0)
-						newsprite = spr_teddy_launch
-					else
-						newsprite = spr_teddy_launchjump
-				}
-				else
-				{
-					if (vsp > 0)
-						newsprite = spr_teddy_fall
-					else
-						newsprite = spr_teddy_jump
-				}
-			}
-			
-			if (newsprite != spr_teddy_brake)
-				image_xscale = facingdirection
-			break;
-		case playerstates.crouch:
-			newsprite = spr_teddy_crouch
-			image_xscale = facingdirection
-			break;
-		case playerstates.dash:
-			newsprite = spr_teddy_dash
-			break;
-		case playerstates.stomp:
-			newsprite = spr_teddy_stomp
-			break;
-		case playerstates.hurt:
-			newsprite = spr_teddy_ouch
-			break;
-		case playerstates.inactive:
-			break;
-		case playerstates.dead:
-			newsprite = spr_teddy_die
-			image_angle += hsp
-			break;
-		case playerstates.slide:
-			newsprite = spr_teddy_slide
-			break;
-		case playerstates.bounce:
-			newsprite = spr_teddy_fall
-			image_xscale = facingdirection
-			break;
-		case playerstates.win:
-			if (sprite_index != spr_teddy_winb)
-				newsprite = spr_teddy_win
-			break;
-		case playerstates.golfstop:
-			newsprite = spr_yaysuu_spinball
-			break;
-	}
-	if (newsprite != sprite_index)
-	{
-		image_index = 0
-		if sprite_index == spr_teddy_brake
-			image_xscale = facingdirection
-	}
-	sprite_index = newsprite
-	
-	if (sprite_index == spr_teddy_jump && image_index == 5)
-		image_index = 2
-	
-	if (sprite_index == spr_teddy_idle || sprite_index == spr_teddy_wait)
-		idletime++
-	else
-		idletime = 0
-
-	if (!audio_exists(runningsound))
-		runningsound = audio_play_sound(snd_run, 1, true)
-	if (sprite_index == spr_teddy_run)
-	{
-		if audio_is_paused(runningsound)
-			audio_resume_sound(runningsound)
-		
-		var runpitch = ((abs(hsp) - walkspeed)  / (runspeed - walkspeed) * 0.5) + 0.5 //hsp=walkspeed -> 0.5   hsp=runspeed -> 1
-		audio_sound_pitch(runningsound, runpitch)
-		image_speed = runpitch
-	}
-	else if !audio_is_paused(runningsound)
-	{
-		audio_pause_sound(runningsound)
-		image_speed = 1
-	}
-		
-	if (sprite_index == spr_teddy_brake && abs(hsp) > walkspeed)
-	{
-		if (!hasplayedbrakesound)
-		{
-			audio_play_sound(snd_brake, 1, false)
-			hasplayedbrakesound = true
-		}
-	}
-	else
-		hasplayedbrakesound = false
-}
-else if (global.char == "C")
-{
-	var newsprite = sprite_index
-    switch (state)
-	{
-		case playerstates.normal:
-			if (grounded)
-			{
-				if (sign(hsp) != sign(yearnedhsp) && !gotwalled)
-				{
-					if ((sprite_index == spr_cotton_idle || sprite_index == spr_cotton_walk) && abs(hsp) < walkspeed && sign(yearnedhsp) == 0)
-						newsprite = spr_cotton_idle
-					else
-						newsprite = spr_cotton_brake
-				}
-				else if (abs(hsp) < yearnaccel)
-				{
-					if (idletime > 600)
-						newsprite = spr_cotton_wait
-					else
-						newsprite = spr_cotton_idle
-				}
-				else if (abs(hsp) > walkspeed)
-					newsprite = spr_cotton_run
-				else
-					newsprite = spr_cotton_walk
-			}
-			else
-			{
-				if (!djump)
-				{
-					newsprite = spr_cotton_fly
-				}
-				else
-				{
-					if (vsp > 0)
-						newsprite = spr_cotton_fall
-					else
-						newsprite = spr_cotton_jump
-				}
-			}
-			
-			if (newsprite != spr_cotton_brake)
-				image_xscale = facingdirection
-			break;
-		case playerstates.crouch:
-			newsprite = spr_cotton_crouch
-			image_xscale = facingdirection
-			break;
-		case playerstates.stomp:
-			newsprite = spr_cotton_ball
-			image_xscale = 1
-			break;
-		case playerstates.hurt:
-			newsprite = spr_cotton_ouchie
-			break;
-		case playerstates.inactive:
-			break;
-		case playerstates.dead:
-			newsprite = spr_cotton_dieded
-			image_angle += hsp
-			break;
-		case playerstates.slide:
-			newsprite = spr_cotton_slide
-			break;
-		case playerstates.bounce:
-			newsprite = spr_cotton_ball
-			image_xscale = 1
-			break;
-		case playerstates.win:
-			newsprite = spr_cotton_win
-			break;
-		case playerstates.golfstop:
-			newsprite = spr_cotton_ball
-			image_xscale = 1
-			break;
-	}
-	if (newsprite != sprite_index)
-	{
-		image_index = 0
-		if sprite_index == spr_cotton_brake
-			image_xscale = facingdirection
-	}
-	sprite_index = newsprite
-	
-	if (sprite_index == spr_cotton_jump && round(image_index) == 3)
-		image_index = 1
-	
-	if (sprite_index == spr_cotton_idle || sprite_index == spr_cotton_wait)
-		idletime++
-	else
-		idletime = 0
-
-	if (!audio_exists(runningsound))
-		runningsound = audio_play_sound(snd_run, 1, true)
-	if (sprite_index == spr_cotton_run)
-	{
-		if audio_is_paused(runningsound)
-			audio_resume_sound(runningsound)
-		
-		var runpitch = ((abs(hsp) - walkspeed)  / (runspeed - walkspeed) * 0.5) + 0.5 //hsp=walkspeed -> 0.5   hsp=runspeed -> 1
-		audio_sound_pitch(runningsound, runpitch)
-		image_speed = runpitch
-	}
-	else if !audio_is_paused(runningsound)
-	{
-		audio_pause_sound(runningsound)
-		image_speed = 1
-	}
-		
-	if (sprite_index == spr_cotton_brake && abs(hsp) > walkspeed)
-	{
-		if (!hasplayedbrakesound)
-		{
-			audio_play_sound(snd_slip, 1, false)
 			hasplayedbrakesound = true
 		}
 	}
