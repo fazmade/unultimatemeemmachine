@@ -23,7 +23,7 @@
   ],
   "name":"spr_yaysuu_chrselect_ok",
   "nineSlice":null,
-  "origin":4,
+  "origin":9,
   "parent":{
     "name":"menus",
     "path":"folders/Sprites/menus.yy",
@@ -78,7 +78,7 @@
     "visibleRange":null,
     "volume":1.0,
     "xorigin":111,
-    "yorigin":111,
+    "yorigin":151,
   },
   "swatchColours":null,
   "swfPrecision":0.5,
