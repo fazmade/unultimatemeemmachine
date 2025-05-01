@@ -261,6 +261,7 @@
     {"name":"snd_coin","order":12,"path":"sounds/snd_coin/snd_coin.yy",},
     {"name":"snd_confirm","order":11,"path":"sounds/snd_confirm/snd_confirm.yy",},
     {"name":"snd_cottonselect","order":81,"path":"sounds/snd_cottonselect/snd_cottonselect.yy",},
+    {"name":"snd_crash","order":93,"path":"sounds/snd_crash/snd_crash.yy",},
     {"name":"snd_dashpad","order":55,"path":"sounds/snd_dashpad/snd_dashpad.yy",},
     {"name":"snd_doublejump_c","order":87,"path":"sounds/snd_doublejump_c/snd_doublejump_c.yy",},
     {"name":"snd_doublejump","order":8,"path":"sounds/snd_doublejump/snd_doublejump.yy",},

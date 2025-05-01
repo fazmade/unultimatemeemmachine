@@ -62,3 +62,5 @@ showarrow = false
 inbackground = false
 damageflash = false
 inwater = false
+stompfloat = -3
+canmovetimer = 0

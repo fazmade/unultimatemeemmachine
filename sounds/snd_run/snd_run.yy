@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":4.8065305,
+  "duration":1.2,
   "name":"snd_run",
   "parent":{
     "name":"Sounds",
@@ -19,7 +19,7 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"snd_run.mp3",
+  "soundFile":"snd_run.wav",
   "type":0,
   "volume":1.0,
 }

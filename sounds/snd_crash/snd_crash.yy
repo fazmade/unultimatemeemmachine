@@ -1,6 +1,6 @@
 {
   "$GMSound":"",
-  "%Name":"mus_title",
+  "%Name":"snd_crash",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -9,8 +9,8 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":44.569023,
-  "name":"mus_title",
+  "duration":4.729297,
+  "name":"snd_crash",
   "parent":{
     "name":"Sounds",
     "path":"folders/Sounds.yy",
@@ -19,7 +19,7 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"mus_title.wav",
+  "soundFile":"snd_crash.wav",
   "type":0,
   "volume":1.0,
 }

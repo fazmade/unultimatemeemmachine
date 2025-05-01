@@ -16,7 +16,7 @@ else
 {
 	if (global.key_jumpp)
 	{
-		delay=120
+		delay=360
 		selected=true
 		audio_play_sound(snd_confirm,1,false)
 		global.char="Y"

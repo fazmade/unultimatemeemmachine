@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":0.6109297,
+  "duration":0.5479365,
   "name":"snd_brake",
   "parent":{
     "name":"Sounds",
@@ -19,7 +19,7 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"snd_brake.mp3",
+  "soundFile":"snd_brake.wav",
   "type":0,
   "volume":1.0,
 }

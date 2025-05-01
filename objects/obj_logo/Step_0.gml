@@ -1,14 +1,12 @@
 /// @description Insert description here
 // You can write your code in this editor
-image_xscale=clamp(image_xscale,1,2)
-image_yscale=clamp(image_yscale,1,2)
-if image_xscale>1
+if image_xscale
 {
-	image_xscale-=0.005
+	image_xscale+=0.001
 }
-if image_yscale>1
+if image_yscale
 {
-	image_yscale-=0.005
+	image_yscale+=0.001
 }
 if uwt>0
 {
@@ -16,5 +14,5 @@ if uwt>0
 }
 if uwt=0
 {
-	sprite_index=spr_logo
+	visible = false
 }

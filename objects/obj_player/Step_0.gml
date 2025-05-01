@@ -10,7 +10,9 @@ enum playerstates
 	slide,
 	bounce,
 	win,
-	golfstop
+	golfstop,
+	stompstart,
+	stompend
 }
 
 if (!global.inlevel)
@@ -89,7 +91,7 @@ else
 
 if (state != playerstates.hurt && state != playerstates.dead)
 {
-	if (state == playerstates.crouch || state == playerstates.inactive || state == playerstates.win)
+	if (state == playerstates.crouch || state == playerstates.inactive || state == playerstates.win || (state == playerstates.stompend && canmovetimer > 0))
 		wsp = 0
 	else if (global.key_run)
 		wsp = runspeed
@@ -110,7 +112,7 @@ if (state != playerstates.dead && state != playerstates.inactive)
 {
 	
 //airdash
-if ((!grounded) && global.key_dashp && (state == playerstates.normal || state == playerstates.bounce || state == playerstates.stomp) && newstate == state && !dshed && candodashdo && global.char != "C")
+if ((!grounded) && global.key_dashp && (state == playerstates.normal || state == playerstates.stomp) && newstate == state && !dshed && candodashdo && global.char != "C")
 {
     hsp = dashboost * facingdirection
     vsp = -dashboost
@@ -121,7 +123,7 @@ if ((!grounded) && global.key_dashp && (state == playerstates.normal || state ==
 }
 if (state == playerstates.dash && newstate == state)
 {
-	if (grounded || amiwalled(hsp))
+	if (grounded || amiwalled(hsp) || place_meeting(x + hsp, y + vsp, obj_playercollision))
 	{
 		newstate = playerstates.normal
 	}
@@ -147,18 +149,28 @@ if (state == playerstates.dash && newstate == state)
 //stomp
 if ((!grounded) && global.key_downp && newstate == state && (state == playerstates.normal || state == playerstates.dash))
 {
-	if (vsp < 10)
-		vsp = 10
+	vsp = stompfloat
     audio_play_sound(snd_stomp, 1, false)
-	newstate = playerstates.stomp
+	newstate = playerstates.stompstart
 }
+//else if (state == playerstates.stompstart && newstate == state)
+//{
+//	vsp = stompfloat
+//}
 else if (grounded && state == playerstates.stomp && newstate == state)
 {
-	newstate = playerstates.normal
+	newstate = playerstates.stompend
 	grounded = true
-	sprite_index = spr_yaysuu_endpound
 	hsp = 0
     audio_play_sound(snd_poundland, 1, false)
+	canmovetimer = 10
+}
+else if (state == playerstates.stompend && newstate == state)
+{
+	if (canmovetimer > 0 && grounded)
+		canmovetimer--
+	else if (hsp != 0)
+		newstate = playerstates.normal
 }
 
 //dash run
@@ -330,7 +342,7 @@ else
     damageflash = false
 
 //vulnerability
-var runattack = (abs(hsp) > rundamagespeed && sign(hsp) == sign(yearnedhsp) && state == playerstates.normal)
+var runattack = (abs(hsp) > rundamagespeed && sign(hsp) == sign(yearnedhsp) && state == playerstates.normal) || hasplayedbrakesound
 vulnerable = !(state == playerstates.dash || state == playerstates.slide || state == playerstates.stomp || newstate == playerstates.dash || newstate == playerstates.slide || newstate == playerstates.stomp || global.inv == 1 || runattack || ((state == playerstates.bounce || newstate == playerstates.bounce) && global.char == "C"))
 if (vulnerable)
 	global.combo = 0
@@ -642,21 +654,26 @@ if (global.char == "Y")
 		case playerstates.normal:
 			if (grounded)
 			{
-				if (sign(hsp) != sign(yearnedhsp) && !gotwalled && sprite_index != spr_yaysuu_endpound)
+				if (sign(hsp) != sign(yearnedhsp) && !gotwalled)
 				{
 					if ((sprite_index == spr_yaysuu_idle || sprite_index == spr_yaysuu_walk) && abs(hsp) < walkspeed && sign(yearnedhsp) == 0)
 						newsprite = spr_yaysuu_idle
 					else
 						newsprite = spr_yaysuu_brake
 				}
-				else if (abs(hsp) < yearnaccel && sprite_index != spr_yaysuu_endpound)
+				else if (abs(hsp) < yearnaccel)
 				{
-					if (idletime > 600)
-						newsprite = spr_yaysuu_wait
+					if (idletime > 720)
+					{
+						if (idletime % 480 < 240)
+							newsprite = spr_yaysuu_wait
+						else
+							newsprite = spr_yaysuu_waitb
+					}
 					else
 						newsprite = spr_yaysuu_idle
 				}
-				else if (abs(hsp) > 0.5)
+				else
 					newsprite = spr_yaysuu_walk
 			}
 			else
@@ -697,6 +714,12 @@ if (global.char == "Y")
 		case playerstates.golfstop:
 			newsprite = spr_yaysuu_spinball
 			break;
+		case playerstates.stompstart:
+			newsprite = spr_yaysuu_startpound
+			break;
+		case playerstates.stompend:
+			newsprite = spr_yaysuu_endpound
+			break;
 	}
 	if (newsprite != sprite_index)
 	{
@@ -709,7 +732,7 @@ if (global.char == "Y")
 	if (sprite_index == spr_yaysuu_airdash && floor(image_index) == 7) //don't replay the animation. thanks for adding 2 extra useless frame yaysuu!
 		image_index = 5
 	
-	if (sprite_index == spr_yaysuu_idle || sprite_index == spr_yaysuu_wait)
+	if (sprite_index == spr_yaysuu_idle || sprite_index == spr_yaysuu_wait || sprite_index == spr_yaysuu_waitb)
 		idletime++
 	else
 		idletime = 0
