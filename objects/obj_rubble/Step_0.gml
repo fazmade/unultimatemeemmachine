@@ -1,7 +1,7 @@
 /// @description Insert description here
 // You can write your code in this editor
-var checkoffsetx
-var checkoffsety
+var checkoffsetx = 0
+var checkoffsety = 0
 var hascollision = true
 var resetplayerstate = false
 if (!obj_player.vulnerable)
@@ -35,7 +35,7 @@ else if (obj_player.state == playerstates.bounce)
 	checkoffsety = obj_player.vsp * 2
 }
 
-if hascollision
+if hascollision && !weak
 	mycollision.y = y
 else
 {

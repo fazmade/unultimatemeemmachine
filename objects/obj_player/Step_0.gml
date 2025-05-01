@@ -169,7 +169,7 @@ else if (state == playerstates.stompend && newstate == state)
 {
 	if (canmovetimer > 0 && grounded)
 		canmovetimer--
-	else if (hsp != 0)
+	else if (hsp != 0) || !grounded
 		newstate = playerstates.normal
 }
 
@@ -208,6 +208,8 @@ if (grounded && newstate == state && state == playerstates.normal && global.key_
 else if (state == playerstates.crouch && newstate == state && (!grounded || !global.key_down) && !forcecrouch)
 	newstate = playerstates.normal
 
+if (forcecrouch && grounded && abs(hsp) < 1)
+	hsp = move
 //going through platform
 if (grounded && global.key_runp && state = playerstates.crouch && (newstate == state || newstate == playerstates.crouch))
 {
@@ -309,8 +311,7 @@ if (ouchies)
 		{
 			deathies = false;
 		    newstate = playerstates.dead
-			if (global.lives > 0)
-				global.lives--
+			global.lives--
 		    vsp = -abs(vsp)
 		    audio_stop_all()
 			audio_play_sound(mus_dead, 1, false)
@@ -343,7 +344,7 @@ else
 
 //vulnerability
 var runattack = (abs(hsp) > rundamagespeed && sign(hsp) == sign(yearnedhsp) && state == playerstates.normal) || hasplayedbrakesound
-vulnerable = !(state == playerstates.dash || state == playerstates.slide || state == playerstates.stomp || newstate == playerstates.dash || newstate == playerstates.slide || newstate == playerstates.stomp || global.inv == 1 || runattack || ((state == playerstates.bounce || newstate == playerstates.bounce) && global.char == "C"))
+vulnerable = !((state == playerstates.dash && image_index < 4) || state == playerstates.slide || state == playerstates.stomp || (newstate == playerstates.dash && image_index < 4) || newstate == playerstates.slide || newstate == playerstates.stomp || global.inv == 1 || runattack || ((state == playerstates.bounce || newstate == playerstates.bounce) && global.char == "C"))
 if (vulnerable)
 	global.combo = 0
 if (runattack)
@@ -356,12 +357,7 @@ else
 if (state == playerstates.dead)
 {
 	if (!audio_is_playing(mus_dead) && !obj_fadeblack.fading)
-	{
-	    if (global.lives == 0)
-		    loadroom(room_gameover, loadtype.menu)
-		else
-		    loadroom(room, loadtype.respawn)
-	}
+		loadroom(room, loadtype.respawn)
 }
 else
 {

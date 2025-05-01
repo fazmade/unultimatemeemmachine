@@ -15,8 +15,8 @@
     "path":"folders/Objects/levelobjs.yy",
   },
   "parentObjectId":{
-    "name":"obj_turnaround",
-    "path":"objects/obj_turnaround/obj_turnaround.yy",
+    "name":"obj_othercollision",
+    "path":"objects/obj_othercollision/obj_othercollision.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,

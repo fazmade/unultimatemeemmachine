@@ -1,2 +1,2 @@
-global.currentsong=mus_chillfields_1
-scr_windowtitle("A Sunnier Morning... in Chill Fields Stage 1")
+global.currentsong=mus_mussic
+scr_windowtitle("A Sussier Morning... in Killy Fields Stage 1")

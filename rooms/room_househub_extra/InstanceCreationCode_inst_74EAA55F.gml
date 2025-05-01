@@ -1,2 +1,2 @@
-robot1_hsp = 2
+robot1_hsp = 8
 sprite_index = spr_secretorang

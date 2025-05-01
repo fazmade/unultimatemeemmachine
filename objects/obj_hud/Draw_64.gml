@@ -26,10 +26,13 @@ if global.inlevel && room != room_dev && !global.inhub
 				draw_sprite(spr_yaysuucoinicon,0,32,96)
 			draw_text(64,96,global.coins)
 		}
-		if (global.char == "C")
-			health_system_hearts(spr_carrot, global.hp, global.maxhp, 32, healthheight)
-		else
-			health_system_hearts(spr_pizza, global.hp, global.maxhp, 32, healthheight)
+		//if (global.char == "C")
+		//	health_system_hearts(spr_carrot, global.hp, global.maxhp, 32, healthheight)
+		//else
+		//	health_system_hearts(spr_pizza, global.hp, global.maxhp, 32, healthheight)
+		if (global.hp > 0)
+			draw_sprite(spr_pizza, 3 - global.hp, 32, healthheight)
+		
 		if (comboshowtimer > 0)
 		{
 			draw_set_halign(fa_right)
@@ -43,25 +46,7 @@ if global.inlevel && room != room_dev && !global.inhub
 		}
 		
 		draw_set_font(global.font)
-		if (os_type != os_android)
-		{
-			if global.char="Y"
-				draw_sprite(spr_yaysuulifeicon,0,32,416)
-			else if global.char="T"
-				draw_sprite(spr_teddylifeicon,0,32,416)
-			else if global.char="C"
-				draw_sprite(spr_cottonlifeicon,0,32,416)
-			draw_text(64,416,global.lives)
-		}
-		else
-		{
-			if global.char="Y"
-				draw_sprite(spr_yaysuulifeicon,0,480,32)
-			else if global.char="T"
-				draw_sprite(spr_teddylifeicon,0,480,32)
-			else if global.char="C"
-				draw_sprite(spr_cottonlifeicon,0,480,32)
-			draw_text(64,416,global.lives)
-		}
+		draw_sprite(spr_yaysuulifeicon,global.lives < 0,32,416)
+		draw_text(64,416,global.lives)
 	}
 }

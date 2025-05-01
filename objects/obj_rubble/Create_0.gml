@@ -5,3 +5,4 @@ destroyedbyplayer = false
 debrissprite = spr_rubbledebris
 breaksound = snd_breakrubble
 image_index = irandom(image_number)
+weak = false
