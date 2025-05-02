@@ -9,11 +9,11 @@ if showtext
         audio_play_sound(choose(snd_sign_1, snd_sign_2, snd_sign_3, snd_sign_4, snd_sign_5, snd_sign_6, snd_sign_7, snd_sign_8, snd_sign_9, snd_sign_10, snd_sign_11, snd_sign_12), 1, false)
         obj_camera.followtimer = 60
     }
-    if (messagey < 160)
+    if (messagey < textheight)
     {
-        messagey = (messagey + 160) / 2
-        if (messagey > 159)
-            messagey = 160
+        messagey = (messagey + textheight) / 2
+        if (messagey > textheight-1)
+            messagey = textheight
     }
 }
 else

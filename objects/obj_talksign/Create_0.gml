@@ -3,3 +3,4 @@
 showtext = false
 cachedshowtext = false
 messagey = 0
+textheight = -1

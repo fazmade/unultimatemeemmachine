@@ -1,0 +1,1 @@
+text = "WELL THAT'S RUDE."

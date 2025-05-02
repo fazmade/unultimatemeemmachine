@@ -1,0 +1,1 @@
+text = "THIS ISN'T HAIR IT'S JUST VERY HOT"

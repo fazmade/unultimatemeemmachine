@@ -11,7 +11,7 @@ global.voicelines=false
 audio_group_load(voicelines)
 window_enable_borderless_fullscreen(true)
 global.trial=false
-global.font=font_add_sprite_ext(spr_text,"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ.,:!?-/()+×÷%=≈~ΓΔΘΛΞΠΣΦΨΩ_БДЂЖИЛЉЊЋУЦЧЏШÞ€Æ™☺💩",false,0)
+global.font=font_add_sprite_ext(spr_text,"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ.,:!?-/()+×÷%=≈~ΓΔΘΛΞΠΣΦΨΩ_БДЂЖИЛЉЊЋУЦЧЏШÞ€Æ™☺💩ЗК",false,0)
 global.subtitlefont=font_add_sprite_ext(spr_subtitlefont, "()[]!#$%'*,.?@^abcdefghijklmnopqrstuvwxyz~{}0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ:",false,0)
 global.optfont=font_add_sprite_ext(spr_text_options,"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ.,:!?-",false,0)
 global.inlevel = false

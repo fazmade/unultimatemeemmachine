@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":54.4,
+  "duration":54.39884,
   "name":"mus_tutorial",
   "parent":{
     "name":"Sounds",
@@ -19,7 +19,7 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"mus_tutorial.wav",
+  "soundFile":"mus_tutorial.mp3",
   "type":0,
   "volume":1.0,
 }
