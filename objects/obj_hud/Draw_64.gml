@@ -46,7 +46,7 @@ if global.inlevel && room != room_dev && !global.inhub
 		}
 		
 		draw_set_font(global.font)
-		draw_sprite(spr_yaysuulifeicon,global.lives < 0,32,416)
+		draw_sprite(spr_yaysuulifeicon, 0,32,416)
 		draw_text(64,416,global.lives)
 	}
 }
