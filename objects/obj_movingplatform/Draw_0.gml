@@ -10,25 +10,10 @@ if (position != 1)
 	draw_sprite_ext(spr_movingplatform_socket, 0, otherpointx, otherpointy, 1, 1, image_angle, image_blend, image_alpha)
 	draw_sprite_ext(spr_movingplatform_socket, 0, otherpointx + (image_xscale * 32), otherpointy, -1, image_yscale, image_angle, image_blend, image_alpha)
 }
-draw_set_alpha(1)
-draw_set_color(#1D2B53)
-//draw_line_width(firstpointx + 8, firstpointy + 6, otherpointx + 8, otherpointy + 6, 2)
-//draw_line_width(firstpointx + (image_xscale * 32) - 8, firstpointy + 6, otherpointx + (image_xscale * 32) - 8, otherpointy + 6, 2)
-draw_set_color(c_white)
-draw_sprite_ext(spr_movingplatform_leftside, screwindex, x, intendedy, 1, 1, image_angle, image_blend, image_alpha)
-draw_sprite_ext(spr_movingplatform_rightside, screwindex, x + (image_xscale * 32), intendedy, 1, 1, image_angle, image_blend, image_alpha)
+draw_sprite_ext(spr_movingplatform_leftside, visualindexoffset + moving, x, intendedy, 1, 1, image_angle, image_blend, image_alpha)
+draw_sprite_ext(spr_movingplatform_rightside, visualindexoffset + moving, x + (image_xscale * 32), intendedy, 1, 1, image_angle, image_blend, image_alpha)
 if (image_xscale > 1)
-	draw_sprite_tileblock(spr_movingplatform_main, 0, x + 16, intendedy, image_xscale - 1, 1, image_blend, image_alpha)
-if (moving)
-{
-	if (invertfacedir)
-		draw_sprite_ext(movingfella, 1 - movementfacedir, x + (image_xscale * 16), intendedy, 1, 1, image_angle, image_blend, image_alpha)
-	else
-		draw_sprite_ext(movingfella, 1 + movementfacedir, x + (image_xscale * 16), intendedy, 1, 1, image_angle, image_blend, image_alpha)
-}
-else
-	draw_sprite_ext(idlefella, 0, x + (image_xscale * 16), intendedy, 1, 1, image_angle, image_blend, image_alpha)
-
+	draw_sprite_tileblock(spr_movingplatform_main, visualindexoffset + moving, x + 16, intendedy, image_xscale - 1, 1, image_blend, image_alpha)
 
 if (global.showcollision)
 {

@@ -5,7 +5,7 @@ if sprite_index == bouncesprite && floor(image_index) == 2 && !hasbounced
 {
 	hasbounced = true
 	audio_play_sound(snd_boing,1,false)
-	hbounce = lengthdir_x(bounce, image_angle + 90)
+	hbounce = lengthdir_x(bounce, image_angle + 90) / 0.6
 	vbounce = lengthdir_y(bounce, image_angle + 90)
 	if touchingplayer(x, y)
 	{
@@ -20,7 +20,11 @@ if sprite_index == bouncesprite && floor(image_index) == 2 && !hasbounced
 		if (hbounce != 0)
 			thingy.hsp = hbounce
 		if (vbounce != 0)
+		{
+			if (vbounce < 0)
+				thingy.grounded = false
 			thingy.vsp = vbounce
+		}
 	}
 }
 else if sprite_index == normsprite && (touchingplayer(x, y) || place_meeting(x, y, obj_movingobject))

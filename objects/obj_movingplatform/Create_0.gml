@@ -18,3 +18,4 @@ invertfacedir = false
 playeractivated = true
 idlefella = spr_movingplatform_fella
 movingfella = spr_movingplatform_movingfella
+visualindexoffset = 0

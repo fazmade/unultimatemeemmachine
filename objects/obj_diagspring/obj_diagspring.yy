@@ -8,8 +8,8 @@
   "name":"obj_diagspring",
   "overriddenProperties":[],
   "parent":{
-    "name":"levelobjs",
-    "path":"folders/Objects/levelobjs.yy",
+    "name":"old",
+    "path":"folders/Objects/levelobjs/old.yy",
   },
   "parentObjectId":{
     "name":"obj_spring",

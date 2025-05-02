@@ -6,3 +6,4 @@ event_inherited();
 playeractivated = false
 idlefella = spr_movingplatform_toggledfella
 movingfella = spr_movingplatform_movingtoggledfella
+visualindexoffset = 2
