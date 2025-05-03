@@ -1,10 +1,10 @@
 {
   "$GMSprite":"",
   "%Name":"spr_chicken",
-  "bboxMode":0,
+  "bboxMode":2,
   "bbox_bottom":31,
   "bbox_left":1,
-  "bbox_right":31,
+  "bbox_right":30,
   "bbox_top":2,
   "collisionKind":1,
   "collisionTolerance":0,

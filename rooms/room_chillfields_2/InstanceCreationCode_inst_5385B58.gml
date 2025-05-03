@@ -1,1 +1,1 @@
-sprite_index = spr_secrettile_chilldark
+sprite_index = spr_secrettile_chill

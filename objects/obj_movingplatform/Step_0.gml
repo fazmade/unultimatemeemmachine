@@ -45,8 +45,13 @@ if (moving)
 	
 	if instance_exists(attachedobject)
 	{
-		attachedobject.x += x-oldx
-		attachedobject.y += intendedy-oldy
+		if (detachable && !place_meeting(oldx, oldy-1, attachedobject))
+			attachedobject = noone
+		else
+		{
+			attachedobject.x += x-oldx
+			attachedobject.y += intendedy-oldy
+		}
 	}
 }
 else
