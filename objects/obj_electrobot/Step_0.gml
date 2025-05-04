@@ -51,7 +51,7 @@ switch (state)
 		{
 			vulnerable = false
 			state = choose(electrobotstates.jump, electrobotstates.spin, electrobotstates.shoot)
-			attackcount = 3
+			attackcount = 8
 			hasdamaged = false
 			switch (state) //ah yes switch statements in switch statements
 			{
@@ -93,14 +93,14 @@ switch (state)
 			}
 			else
 			{
-				delay = 54
+				delay = 15
 				attackcount--
 				instance_create_depth(obj_player.x-16,0,depth,obj_electrobot_warning)
 			}
 		}
 		break;
 	case electrobotstates.spin:
-		hsp = image_xscale * 6
+		hsp = image_xscale * 12
 		if (place_meeting(x + hsp, y, obj_collision))
 		{
 			vsp = -3
@@ -131,7 +131,7 @@ switch (state)
 				image_index = 0
 				with (instance_create_depth(x,y,depth+1,obj_electrobot_boolet))
 					image_xscale = other.image_xscale	
-				delay = 20
+				delay = 5
 				attackcount--
 			}
 		}
@@ -170,7 +170,7 @@ switch (state)
 			else
 			{
 				instance_create_depth(x+random_range(-16,16),y+random_range(-16,16),depth-1,obj_explode_jr)
-				kablooeyjrtimer = 5
+				kablooeyjrtimer = 2
 			}
 		}
 		else

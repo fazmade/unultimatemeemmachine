@@ -91,7 +91,7 @@ else
 
 if (state != playerstates.hurt && state != playerstates.dead)
 {
-	if (state == playerstates.crouch || state == playerstates.inactive || state == playerstates.win || (state == playerstates.stompend && canmovetimer > 0))
+	if (state == playerstates.crouch || state == playerstates.inactive || state == playerstates.win || (state == playerstates.stompend && canmovetimer > 0) || state == playerstates.slide)
 		wsp = 0
 	else if (global.key_run)
 		wsp = runspeed
@@ -139,12 +139,14 @@ if (state == playerstates.dash && newstate == state)
 }
 
 //sliiide to the left! sliiide to the right! criss-cross! criss-cross! cha cha real smooth~ *ragdoll noises*
-/*if (grounded && ((abs(hsp) > walkspeed && global.key_downp) || global.key_dashp) && (state == playerstates.normal || state == playerstates.crouch) && newstate == state && candodashdo)
+if (grounded && global.key_dashp && state == playerstates.crouch && newstate == state)
 {
-    hsp = dashboost * facingdirection
 	newstate = playerstates.slide
+	hsp = facingdirection * 5
     audio_play_sound(snd_slide, 1, false)
-}*/
+}
+else if (state == playerstates.slide && abs(hsp) < 1 && newstate == state)
+	newstate = playerstates.crouch
 
 //stomp
 if ((!grounded) && global.key_downp && newstate == state && (state == playerstates.normal || state == playerstates.dash))
@@ -193,12 +195,9 @@ else if (state == playerstates.stompend && newstate == state)
 var forcecrouch = false
 var savedmask = mask_index
 mask_index = spr_collisionmask
-if (place_meeting(x, y, obj_playercollision))
+if (place_meeting(x, y, obj_playercollision)) && state != playerstates.slide && newstate != playerstates.slide
 {
-	if ((abs(hsp) <= runspeed || amiwalled(hsp)) && state != playerstates.slide)
-		newstate = playerstates.crouch
-	else
-		newstate = playerstates.slide
+	newstate = playerstates.crouch
 	forcecrouch = true
 }
 mask_index = savedmask
@@ -344,7 +343,7 @@ else
 
 //vulnerability
 var runattack = (abs(hsp) > rundamagespeed && sign(hsp) == sign(yearnedhsp) && state == playerstates.normal) || hasplayedbrakesound
-vulnerable = !((state == playerstates.dash && image_index < 4) || state == playerstates.slide || state == playerstates.stomp || (newstate == playerstates.dash && image_index < 4) || newstate == playerstates.slide || newstate == playerstates.stomp || global.inv == 1 || runattack || ((state == playerstates.bounce || newstate == playerstates.bounce) && global.char == "C"))
+vulnerable = !((state == playerstates.dash && image_index < 4) || state == playerstates.stomp || (newstate == playerstates.dash && image_index < 4) || newstate == playerstates.stomp || runattack || ((state == playerstates.bounce || newstate == playerstates.bounce) && global.char == "C"))
 if (vulnerable)
 	global.combo = 0
 if (runattack)
@@ -380,7 +379,7 @@ if (state != playerstates.dead)
 if (state != playerstates.golfstop && state != playerstates.dead)
 {
 	var accel
-	if abs(hsp) >= walkspeed && (hsp * sign(hsp)) < (yearnedhsp * sign(hsp)) && !global.inv //cotton's gradual run
+	if (abs(hsp) >= walkspeed && (hsp * sign(hsp)) < (yearnedhsp * sign(hsp)) && !global.inv) || state == playerstates.slide //cotton's gradual run
 		accel = yearnacceloverspeed
 	else if (sign(hsp) != sign(yearnedhsp) && sign(yearnedhsp) != 0) || (abs(hsp) <= runspeed) //wants to decrease below walking
 		accel = yearnaccelunderspeed
@@ -661,7 +660,7 @@ if (global.char == "Y")
 				{
 					if (idletime > 720)
 					{
-						if (idletime % 480 < 240)
+						if (idletime % 480 > 240)
 							newsprite = spr_yaysuu_wait
 						else
 							newsprite = spr_yaysuu_waitb

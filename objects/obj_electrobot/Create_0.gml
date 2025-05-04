@@ -15,3 +15,4 @@ jumpsmoothing = 1.1
 idledelay = 120
 extradamagebounces = 0
 slowdown = 0
+grv = 0.2

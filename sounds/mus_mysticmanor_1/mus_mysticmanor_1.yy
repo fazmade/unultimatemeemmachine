@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":92.02937,
+  "duration":95.522385,
   "name":"mus_mysticmanor_1",
   "parent":{
     "name":"Sounds",
@@ -19,7 +19,7 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"mus_mysticmanor_1.mp3",
+  "soundFile":"mus_mysticmanor_1.wav",
   "type":0,
   "volume":1.0,
 }

@@ -24,7 +24,7 @@
   ],
   "name":"spr_chicken",
   "nineSlice":null,
-  "origin":4,
+  "origin":7,
   "parent":{
     "name":"enemys",
     "path":"folders/Sprites/enemys.yy",
@@ -82,7 +82,7 @@
     "visibleRange":null,
     "volume":1.0,
     "xorigin":16,
-    "yorigin":16,
+    "yorigin":32,
   },
   "swatchColours":null,
   "swfPrecision":0.5,

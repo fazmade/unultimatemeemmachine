@@ -9,7 +9,8 @@ if (showtext && !haspaid)
 	obj_player.showarrow = true
 	if (global.key_upp)
 	{
-		global.hp--
+		if (global.hp > 2)
+			global.hp = 2
 		obj_player.ouchies = true
 		text = "THANK YOU FOR YOUR PATRONAGE"
 		textheight = -1
