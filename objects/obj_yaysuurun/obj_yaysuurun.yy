@@ -31,7 +31,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_yaysuu_walk",
+    "path":"sprites/spr_yaysuu_walk/spr_yaysuu_walk.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

@@ -4,4 +4,5 @@
 // Inherit the parent event
 event_inherited();
 
-haspaid = true
+haspaid = false
+sprite_index = spr_sign_idle

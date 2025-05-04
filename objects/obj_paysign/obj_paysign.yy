@@ -34,8 +34,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_sign_idle",
-    "path":"sprites/spr_sign_idle/spr_sign_idle.yy",
+    "name":"spr_sign_talk",
+    "path":"sprites/spr_sign_talk/spr_sign_talk.yy",
   },
   "spriteMaskId":null,
   "visible":true,

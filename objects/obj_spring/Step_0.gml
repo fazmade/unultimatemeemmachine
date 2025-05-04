@@ -18,7 +18,11 @@ if sprite_index == bouncesprite && floor(image_index) == 2 && !hasbounced
 	{
 		var thingy = instance_place(x, y, obj_movingobject)
 		if (hbounce != 0)
+		{
 			thingy.hsp = hbounce
+			if (thingy.object_index == obj_robot1)
+				image_xscale = sign(hbounce)
+		}
 		if (vbounce != 0)
 		{
 			if (vbounce < 0)

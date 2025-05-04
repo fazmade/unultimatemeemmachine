@@ -338,6 +338,7 @@
     {"name":"inst_3DB1489C","path":"rooms/room_chillfields_1/room_chillfields_1.yy",},
     {"name":"inst_8ACE799","path":"rooms/room_chillfields_1/room_chillfields_1.yy",},
     {"name":"inst_65AE819F","path":"rooms/room_chillfields_1/room_chillfields_1.yy",},
+    {"name":"inst_6687E2D8","path":"rooms/room_chillfields_1/room_chillfields_1.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -688,6 +689,7 @@
         {"$GMRInstance":"v2","%Name":"inst_3DB1489C","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_3DB1489C","objectId":{"name":"obj_spike","path":"objects/obj_spike/obj_spike.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":12000.0,"y":1184.0,},
         {"$GMRInstance":"v2","%Name":"inst_8ACE799","colour":4294967295,"frozen":false,"hasCreationCode":true,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_8ACE799","objectId":{"name":"obj_seecret","path":"objects/obj_seecret/obj_seecret.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":10.0,"scaleY":11.0,"x":11712.0,"y":1184.0,},
         {"$GMRInstance":"v2","%Name":"inst_65AE819F","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_65AE819F","objectId":{"name":"obj_die","path":"objects/obj_die/obj_die.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":10.0,"scaleY":1.0,"x":11712.0,"y":1536.0,},
+        {"$GMRInstance":"v2","%Name":"inst_6687E2D8","colour":4294967295,"frozen":false,"hasCreationCode":true,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_6687E2D8","objectId":{"name":"obj_talksign","path":"objects/obj_talksign/obj_talksign.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":4768.0,"y":608.0,},
       ],"layers":[],"name":"game","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRTileLayer":"","%Name":"tileset","depth":400,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"tileset","properties":[],"resourceType":"GMRTileLayer","resourceVersion":"2.0","tiles":{"SerialiseHeight":48,"SerialiseWidth":384,"TileCompressedData":[
           -20,-2147483648,-242,0,-94,-2147483648,-6,7,-6,0,1,1,-15,7,-20,-2147483648,-242,0,-94,-2147483648,-6,

@@ -3,7 +3,7 @@
 if xoffset=632
 	xoffset=0
 else
-	xoffset+=8
+	xoffset+=1
 
 var prevselect = select
 if global.key_leftp

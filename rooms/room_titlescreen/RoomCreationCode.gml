@@ -1,2 +1,2 @@
-scr_windowtitle("YAYSUU's X-Treme Adventure")
+scr_windowtitle("GAME")
 global.currentsong = mus_title

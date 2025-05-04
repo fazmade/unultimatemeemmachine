@@ -7,4 +7,15 @@ event_inherited();
 if (showtext && !haspaid)
 {
 	obj_player.showarrow = true
+	if (global.key_upp)
+	{
+		global.hp--
+		obj_player.ouchies = true
+		text = "THANK YOU FOR YOUR PATRONAGE"
+		textheight = -1
+		cachedshowtext = false
+		instance_destroy(obj_sidespring)
+		instance_destroy(obj_diagspring)
+		haspaid = true
+	}
 }

@@ -1,0 +1,1 @@
+text = "ЗOBИ ME ЛAЗEPБOИ JEP ЖEЛИM ДA ДOДИPHEM HEКOΓA"
