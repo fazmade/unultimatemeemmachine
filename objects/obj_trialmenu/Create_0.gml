@@ -5,7 +5,7 @@ currentlevel=room_tutorial
 endlevel=room_tutorial
 lvlname="Tutorial Stage"
 sprname=spr_tutorialscroll
-ini_open("savedata.ini")
+ini_open("yandata.ini")
 hiscore=ini_read_real("records",string(endlevel)+string("_score"),0)
 timer = ini_read_real("records",string(endlevel)+string("_time"),359999)
 timestring=string_replace_all(string_format(floor(timer / 3600), 2, 0) + ":" + string_format(floor(timer / 60) % 60, 2, 0) + "." + string_format(timer % 60, 2, 0), " ", "0")

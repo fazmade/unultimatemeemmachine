@@ -3,9 +3,7 @@
 if room=room_idlogo
 {
 	video_open("idlogo.mp4")
-	video_pause()
 	video_seek_to(0)
-	loadtime=50
 }
 if room=room_idalogo
 {

@@ -60,4 +60,4 @@ global.returntosettings = false
 if (global.inputtype == -1)
 	room_goto(room_setupinput)
 else
-	room_goto(room_idlogo)
+	room_goto(room_notice)

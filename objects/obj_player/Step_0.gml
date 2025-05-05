@@ -225,7 +225,7 @@ if (grounded && global.key_runp && state = playerstates.crouch && (newstate == s
 }
 
 // jumping
-if ((grounded || djump) && global.key_jumpp && (state != playerstates.inactive && state != playerstates.win && state != playerstates.golfstop && newstate != playerstates.golfstop && state != playerstates.dead && !forcecrouch) && !(place_meeting(x, (y + jmp), obj_playercollision)))
+if ((grounded || djump) && global.key_jumpp && (state != playerstates.inactive && state != playerstates.win && state != playerstates.golfstop && newstate != playerstates.golfstop && state != playerstates.dead && !forcecrouch && state != playerstates.slide && newstate != playerstates.slide) && !(place_meeting(x, (y + jmp), obj_playercollision)))
 {
 	if (!grounded)
 	{
@@ -286,7 +286,7 @@ if (state == playerstates.golfstop && newstate == state)
 if (ouchies)
 {
 	ouchies = false
-	if ((!global.inv && hurtt <= 0 && !winning) || deathies) && state != playerstates.dead && state != playerstates.inactive
+	if ((hurtt <= 0 && !winning) || deathies) && state != playerstates.dead && state != playerstates.inactive
 	{
 		if (deathies)
 			global.hp = 0

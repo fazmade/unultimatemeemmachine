@@ -1,5 +1,5 @@
-otherpointx = 3648
-otherpointy = 288
-movespeed = 0.02
+otherpointx = 4992
+otherpointy = 352
+movespeed = 0.05
 scr_calcplatformdir()
 attachedobject = inst_iamsteve

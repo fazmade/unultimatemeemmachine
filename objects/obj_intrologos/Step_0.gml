@@ -1,13 +1,5 @@
 /// @description Insert description here
 // You can write your code in this editor
-if loadtime=0
-{
-	video_resume()
-}
-if loadtime>0
-{
-	loadtime--
-}
 if global.key_jumpp
 {
 	if room=room_idalogo
