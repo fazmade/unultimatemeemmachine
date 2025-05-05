@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":96.052246,
+  "duration":40.0,
   "name":"mus_chillfields_2",
   "parent":{
     "name":"Sounds",
@@ -19,7 +19,7 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"mus_chillfields_2.mp3",
+  "soundFile":"mus_chillfields_2.wav",
   "type":0,
   "volume":1.0,
 }
