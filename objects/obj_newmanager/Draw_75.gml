@@ -3,7 +3,7 @@ if global.jumpscare=true
 
 if window_get_fullscreen() && global.borders=true
 {
-	switch room
+	/*switch room
 	{
 		case room_chillfields_1:
 		draw_sprite(spr_chillfields_border,0,0,0)
@@ -34,7 +34,8 @@ if window_get_fullscreen() && global.borders=true
 		default:
 		draw_sprite(spr_default_border,0,0,0)
 		break;
-	}
+	}*/
+	draw_sprite(spr_default_border,0,0,0)
 }
 with (obj_fadeblack)
 {

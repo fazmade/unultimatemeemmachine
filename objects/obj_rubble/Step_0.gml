@@ -12,7 +12,7 @@ if (!obj_player.vulnerable)
 		checkoffsetx = 0
 		checkoffsety = obj_player.vsp * 2
 	}
-	else if (obj_player.state == playerstates.bounce)
+	else if (obj_player.state == playerstates.bounce || obj_player.state == playerstates.dash)
 	{
 		hascollision = false
 		checkoffsetx = obj_player.hsp * 2

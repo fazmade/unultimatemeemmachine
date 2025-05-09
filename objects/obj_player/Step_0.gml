@@ -112,31 +112,37 @@ if (state != playerstates.dead && state != playerstates.inactive)
 {
 	
 //airdash
-if ((!grounded) && global.key_dashp && (state == playerstates.normal || state == playerstates.stomp) && newstate == state && !dshed && candodashdo && global.char != "C")
+if ((!grounded) && global.key_dashp && (state == playerstates.normal || state == playerstates.stomp || state == playerstates.stompstart) && newstate == state && !dshed && candodashdo && global.char != "C")
 {
     hsp = dashboost * facingdirection
     vsp = -dashboost
-    dshed = true
+	if (state != playerstates.stompstart)
+		dshed = true
+	else
+		stompboost++
 	newstate = playerstates.dash
     audio_play_sound(snd_airdash, 1, false)
 	image_index = 0
 }
 if (state == playerstates.dash && newstate == state)
 {
-	if (grounded || amiwalled(hsp) || place_meeting(x + hsp, y + vsp, obj_playercollision))
+	if (grounded || amiwalled((dashboost + stompboost) * facingdirection) || place_meeting(x + ((dashboost + stompboost) * facingdirection), y - dashboost, obj_playercollision))
 	{
 		newstate = playerstates.normal
 	}
 	else if (image_index < 4)
 	{
-		hsp = dashboost * facingdirection
+		hsp = (dashboost + stompboost) * facingdirection
 		vsp = -dashboost
 	}
 	else if (vsp == -dashboost + grv)
 	{
 		vsp = -4
+		stompboost = 0
 	}
 }
+if (state != playerstates.dash || playerstates.stompstart)
+	stompboost = 0
 
 //sliiide to the left! sliiide to the right! criss-cross! criss-cross! cha cha real smooth~ *ragdoll noises*
 if (grounded && global.key_dashp && state == playerstates.crouch && newstate == state)
@@ -631,8 +637,7 @@ if (place_meeting(x, y, obj_playercollision)) && hascollision
         y -= 20
 }
 
-//always wrap
-if (room == room_dev)
+if (room == room_chillfields_boss || room == room_dev)
 {
 	if (x < -64)
 		x = room_width + 32
@@ -683,6 +688,7 @@ if (global.char == "Y")
 			break;
 		case playerstates.dash:
 			newsprite = spr_yaysuu_airdash
+			image_xscale = facingdirection
 			break;
 		case playerstates.stomp:
 			newsprite = spr_yaysuu_stomp
