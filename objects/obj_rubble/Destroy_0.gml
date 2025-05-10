@@ -3,7 +3,7 @@
 instance_destroy(mycollision)
 audio_play_sound(breaksound, 1, false, 1, 0, random_range(0.8, 1.2))
 obj_camera.vshakeoffset += 2
-repeat (3)
+repeat (4)
 {
 	with(instance_create_depth(x, y, depth, obj_rubbledebris))
 	{

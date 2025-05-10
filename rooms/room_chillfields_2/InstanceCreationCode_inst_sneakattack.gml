@@ -1,5 +1,5 @@
-otherpointx = 2688
+otherpointx = 2592
 otherpointy = 576
-movespeed = 0.1
+movespeed = 0.075
 scr_calcplatformdir()
 attachedobject = inst_trollbot

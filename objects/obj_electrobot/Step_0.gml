@@ -51,7 +51,7 @@ switch (state)
 		{
 			vulnerable = false
 			state = choose(electrobotstates.jump, electrobotstates.spin, electrobotstates.shoot)
-			attackcount = 8
+			attackcount = 10
 			hasdamaged = false
 			switch (state) //ah yes switch statements in switch statements
 			{
@@ -89,26 +89,18 @@ switch (state)
 				state = electrobotstates.idle
 				vsp = 5
 				gravityapplies = true
-				x = obj_player.x
+				x = obj_player.x + (obj_player.hsp * 32)
 			}
 			else
 			{
-				delay = 15
+				delay = 10
 				attackcount--
 				instance_create_depth(obj_player.x-16,0,depth,obj_electrobot_warning)
 			}
 		}
 		break;
 	case electrobotstates.spin:
-		hsp = image_xscale * 12
-		if (place_meeting(x + hsp, y, obj_collision))
-		{
-			vsp = -3
-			image_xscale = -image_xscale
-			hsp = image_xscale * 6
-			attackcount--
-			grounded = false
-		}
+		hsp = image_xscale * 16
 		if (attackcount == 0 && grounded)
 		{
 			delay = idledelay
@@ -230,7 +222,7 @@ if (room == room_chillfields_boss)
 		x = room_width + 32
 		if (state == electrobotstates.spin)
 		{
-			vsp = -3
+			vsp = -5
 			attackcount--
 			grounded = false
 		}

@@ -4,9 +4,9 @@ var checkoffsetx = 0
 var checkoffsety = 0
 var hascollision = true
 var resetplayerstate = false
-if (!obj_player.vulnerable)
+if (!obj_player.vulnerable || weak)
 {
-	if (obj_player.state == playerstates.stomp)
+	if (obj_player.state == playerstates.stomp || weak)
 	{
 		hascollision = !(obj_player.bbox_right > bbox_left && obj_player.bbox_left < bbox_right && obj_player.bbox_bottom < bbox_top)
 		checkoffsetx = 0
@@ -35,7 +35,7 @@ else if (obj_player.state == playerstates.bounce)
 	checkoffsety = obj_player.vsp * 2
 }
 
-if hascollision && !weak
+if hascollision
 	mycollision.y = y
 else
 {
