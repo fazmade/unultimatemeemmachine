@@ -217,9 +217,9 @@ if (sprite_index == spr_electrobot_jump && image_index == 6)
 event_inherited()
 if (room == room_chillfields_boss)
 {
-	if (x < -64)
+	if (x < -32)
 	{
-		x = room_width + 32
+		x += room_width + 64
 		if (state == electrobotstates.spin)
 		{
 			vsp = -5
@@ -227,9 +227,9 @@ if (room == room_chillfields_boss)
 			grounded = false
 		}
 	}
-	else if (x > room_width + 64)
+	else if (x > room_width + 32)
 	{
-		x = -32
+		x -= room_width + 64
 		if (state == electrobotstates.spin)
 		{
 			vsp = -3

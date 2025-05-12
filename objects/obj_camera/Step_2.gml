@@ -38,15 +38,13 @@ if global.inlevel && obj_player.state != playerstates.dead && obj_player.state !
 }
 
 x = clamp(x, 320, (room_width - 320))
-y = clamp(y, 240, (room_height - 240))
+y = clamp(y + voffset, 240, (room_height - 240))
 
 actualcamx = x
 actualcamy = y
 
 if (!focusonpoint)
 {
-	actualcamy += voffset
-	
 	var wantedspeedoffset = 0
 	if (abs(obj_player.hsp) > obj_player.walkspeed)
 	{

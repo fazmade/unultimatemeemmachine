@@ -385,7 +385,7 @@ if (state != playerstates.dead)
 if (state != playerstates.golfstop && state != playerstates.dead)
 {
 	var accel
-	if (abs(hsp) >= walkspeed && (hsp * sign(hsp)) < (yearnedhsp * sign(hsp)) && !global.inv) || state == playerstates.slide //cotton's gradual run
+	if (abs(hsp) >= walkspeed && (hsp * sign(hsp)) < (yearnedhsp * sign(hsp))) || state == playerstates.slide //cotton's gradual run
 		accel = yearnacceloverspeed
 	else if (sign(hsp) != sign(yearnedhsp) && sign(yearnedhsp) != 0) || (abs(hsp) <= runspeed) //wants to decrease below walking
 		accel = yearnaccelunderspeed
@@ -639,10 +639,10 @@ if (place_meeting(x, y, obj_playercollision)) && hascollision
 
 if (room == room_chillfields_boss || room == room_dev)
 {
-	if (x < -64)
-		x = room_width + 32
-	else if (x > room_width + 64)
-		x = -32
+	if (x < -32)
+		x += room_width + 64
+	else if (x > room_width + 32)
+		x -= room_width + 64
 }
 
 //SPRITES! MY FABOLITE

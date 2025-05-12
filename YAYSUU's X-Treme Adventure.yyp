@@ -581,6 +581,7 @@
     {"id":{"name":"spr_secrettile_chill","path":"sprites/spr_secrettile_chill/spr_secrettile_chill.yy",},},
     {"id":{"name":"spr_secrettile_chilldark","path":"sprites/spr_secrettile_chilldark/spr_secrettile_chilldark.yy",},},
     {"id":{"name":"spr_secrettile_chillgrass","path":"sprites/spr_secrettile_chillgrass/spr_secrettile_chillgrass.yy",},},
+    {"id":{"name":"spr_secrettile_chillgrassdark","path":"sprites/spr_secrettile_chillgrassdark/spr_secrettile_chillgrassdark.yy",},},
     {"id":{"name":"spr_secrettile_dev","path":"sprites/spr_secrettile_dev/spr_secrettile_dev.yy",},},
     {"id":{"name":"spr_secrettile_house","path":"sprites/spr_secrettile_house/spr_secrettile_house.yy",},},
     {"id":{"name":"spr_secrettile_manor","path":"sprites/spr_secrettile_manor/spr_secrettile_manor.yy",},},

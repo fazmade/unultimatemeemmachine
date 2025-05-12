@@ -43,8 +43,6 @@ if (global.inlevel)
 	{
 		x = obj_checkpoint.x
 		y = obj_checkpoint.y
-		if (room != room_chillfields_1)
-			global.hp = 1
 	}
 	else
 	{
