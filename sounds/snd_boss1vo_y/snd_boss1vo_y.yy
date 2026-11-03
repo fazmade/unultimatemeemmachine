@@ -1,15 +1,17 @@
 {
-  "$GMSound":"",
+  "$GMSound":"v2",
   "%Name":"snd_boss1vo_y",
   "audioGroupId":{
     "name":"voicelines",
     "path":"audiogroups/voicelines",
   },
   "bitDepth":1,
-  "bitRate":128,
+  "channelFormat":0,
   "compression":0,
+  "compressionQuality":4,
   "conversionMode":0,
   "duration":3.030204,
+  "exportDir":"",
   "name":"snd_boss1vo_y",
   "parent":{
     "name":"cutscenevo",
@@ -20,6 +22,5 @@
   "resourceVersion":"2.0",
   "sampleRate":44100,
   "soundFile":"snd_boss1vo_y.mp3",
-  "type":0,
   "volume":1.0,
 }
