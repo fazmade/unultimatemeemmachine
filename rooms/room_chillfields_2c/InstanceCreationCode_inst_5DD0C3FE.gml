@@ -1,0 +1,2 @@
+sprite_index = spr_secrettile_chill2
+topsprite = spr_secrettile_cavegrass

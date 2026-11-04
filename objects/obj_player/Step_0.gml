@@ -348,7 +348,7 @@ else
     damageflash = false
 
 //vulnerability
-var runattack = (abs(hsp) > rundamagespeed && sign(hsp) == sign(yearnedhsp) && state == playerstates.normal) || hasplayedbrakesound
+var runattack = (abs(hsp) > rundamagespeed && sign(hsp) == sign(yearnedhsp) && state == playerstates.normal) || hasplayedbrakesound || (sprite_index == spr_yaysuu_brake)
 vulnerable = !((state == playerstates.dash && image_index < 4) || state == playerstates.stomp || (newstate == playerstates.dash && image_index < 4) || newstate == playerstates.stomp || runattack || ((state == playerstates.bounce || newstate == playerstates.bounce) && global.char == "C"))
 if (vulnerable)
 	global.combo = 0

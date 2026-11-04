@@ -13,16 +13,7 @@ if global.pause
 		draw_sprite(spr_paused,0,192,128)
 		draw_set_font(global.font)
 		draw_text(224,224,"RESUME")
-		if room=room_househub || room=room_househub_extra || global.lives<=1
-		{
-			draw_set_alpha(0.5)
-		}
-		else
-		{
-			draw_set_alpha(1)
-		}
 		draw_text(242,256,"RETRY")
-		draw_set_alpha(1)
 		draw_text(256,288,"QUIT")
 		draw_set_color(c_white)
 		if cursor=0

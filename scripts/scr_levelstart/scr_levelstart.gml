@@ -25,7 +25,7 @@ function levelstart()
 			obj_hud.timer=0
 		}
 	}
-	if (global.hp=0)
+	if (global.hp==0)
 	{
 		global.hp=global.maxhp
 	}

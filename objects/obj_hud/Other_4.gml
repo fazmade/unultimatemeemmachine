@@ -4,10 +4,10 @@ showresults = false
 if (global.levelloadtype == loadtype.newlevel || global.levelloadtype == loadtype.respawn)
 {
 	if (room == room_chillfields_1 || room == room_tutorial || (room == room_chillfields_2 && !global.checkpoint))
-		global.hp = 3
+		global.maxhp = 3
 	else
-		global.hp = 1
-	global.maxhp = 3
+		global.maxhp = 1
+	global.hp = global.maxhp
 	hide=false
 	comboshowtimer = 0
 	showncombo = 0

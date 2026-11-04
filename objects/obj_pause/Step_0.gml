@@ -52,16 +52,11 @@ if (global.pause)
 					instance_activate_all()
 					break;
 				case 1:
-					if (global.lives == 1)
-						audio_play_sound(snd_nicetry,1,false)
-					else
-					{
-						global.lives--
-						global.checkpoint=false
-						audio_stop_all()
-						audio_play_sound(snd_confirm,1,false)
-						scr_restartlevel()
-					}
+					global.lives--
+					global.checkpoint=false
+					audio_stop_all()
+					audio_play_sound(snd_confirm,1,false)
+					scr_restartlevel()
 					break;
 				case 2:
 					global.checkpoint=false
@@ -90,7 +85,7 @@ if (global.pause)
 			audio_play_sound(snd_confirm,1,false)
 			audio_resume_all()
 		}
-		if retrykey && !(room=room_househub || room=room_househub_extra) && global.lives!=1
+		if retrykey && !(room=room_househub || room=room_househub_extra)
 		{
 			global.hubstart=false
 			global.checkpoint=false
@@ -99,10 +94,6 @@ if (global.pause)
 			obj_fadeblack.fading=true
 			audio_stop_all()
 			audio_play_sound(snd_confirm,1,false)
-		}
-		if retrykey && (room=room_househub || room=room_househub_extra || global.lives=1)
-		{
-			audio_play_sound(snd_nicetry,1,false)
 		}
 		if quitkey
 		{
