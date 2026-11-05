@@ -51,4 +51,11 @@ if (global.inlevel)
 	}
 	obj_camera.x = x
 	obj_camera.y = y
+	if (room == room_chillfields_2d && state != playerstates.stomp)
+	{
+		vsp = stompfloat
+		newstate = playerstates.stompstart
+		image_index = 0
+	}
+	canmove = true
 }

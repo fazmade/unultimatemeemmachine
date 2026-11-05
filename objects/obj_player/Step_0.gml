@@ -29,7 +29,10 @@ if (inbackground)
 
 inwater = place_meeting(x, y, obj_water)
 
-move = (global.key_right - global.key_left)
+if (canmove)
+	move = (global.key_right - global.key_left)
+else
+	move = 0
 if (move != 0 && state != playerstates.dash)
 	facingdirection = move
 if (global.key_run && state == playerstates.normal && abs(hsp) > walkspeed && global.char != "C")

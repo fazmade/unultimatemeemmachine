@@ -6,3 +6,4 @@ bounce = 15
 hasbounced = false
 hbounce = 0
 vbounce = 0
+funnyspring = false

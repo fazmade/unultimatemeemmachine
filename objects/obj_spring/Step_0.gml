@@ -13,6 +13,8 @@ if sprite_index == bouncesprite && floor(image_index) == 2 && !hasbounced
 			obj_player.hsp = hbounce
 		if (vbounce != 0)
 			obj_player.vsp = vbounce
+		if (funnyspring)
+			obj_player.canmove = false
 	}
 	if place_meeting(x, y, obj_movingobject)
 	{
