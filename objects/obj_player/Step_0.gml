@@ -204,7 +204,7 @@ else if (state == playerstates.stompend && newstate == state)
 var forcecrouch = false
 var savedmask = mask_index
 mask_index = spr_collisionmask
-if (place_meeting(x, y, obj_playercollision)) && state != playerstates.slide && newstate != playerstates.slide
+if (place_meeting(x, y, obj_playercollision)) && state != playerstates.slide && newstate != playerstates.slide 
 {
 	newstate = playerstates.crouch
 	forcecrouch = true
@@ -407,7 +407,7 @@ if (state != playerstates.golfstop && state != playerstates.dead)
 hascollision = true
 if (state == playerstates.dead)
     hascollision = false
-else if (state == playerstates.crouch || state == playerstates.slide)
+else if (state == playerstates.crouch || state == playerstates.slide || state == playerstates.stompend)
     mask_index = spr_crouchcollisionmask
 else
     mask_index = spr_collisionmask
